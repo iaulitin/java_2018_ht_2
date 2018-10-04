@@ -67,7 +67,7 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface negate() {
-        return new ComplexNumber();
+        return new ComplexNumber(0 - getReal(),  0 - getImaginary());
     }
 
     @Override
