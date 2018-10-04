@@ -36,6 +36,7 @@ public class Farmer implements GenericFarmer {
     @Override
     public void petAnAnimal(Animal animal) {
         System.out.println(String.format("Hello %s", animal));
+        animal.produceSound();
     }
 
     @Override
