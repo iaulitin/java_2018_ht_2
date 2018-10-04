@@ -8,6 +8,6 @@ public class Milk extends SimpleGood {
 
     @Override
     public String toString() {
-        return "молоко";
+        return "milk";
     }
 }

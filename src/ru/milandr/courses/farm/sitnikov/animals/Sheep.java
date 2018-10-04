@@ -14,4 +14,9 @@ public class Sheep implements Animal {
     public Good produceGoods() {
         return new Wool();
     }
+
+    @Override
+    public String toString() {
+        return "sheep";
+    }
 }

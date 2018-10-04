@@ -8,6 +8,6 @@ public class Wool extends SimpleGood {
 
     @Override
     public String toString() {
-        return "шерсть";
+        return "wool";
     }
 }

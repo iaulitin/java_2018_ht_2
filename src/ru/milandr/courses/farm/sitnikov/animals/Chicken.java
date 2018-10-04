@@ -14,4 +14,9 @@ public class Chicken implements Animal {
     public Good produceGoods() {
         return new Egg();
     }
+
+    @Override
+    public String toString() {
+        return "chicken";
+    }
 }
