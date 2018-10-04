@@ -3,7 +3,10 @@ package ru.milandr.courses.farm.sitnikov;
 import ru.milandr.courses.farm.Animal;
 import ru.milandr.courses.farm.GenericFarmer;
 import ru.milandr.courses.farm.Good;
+import ru.milandr.courses.farm.sitnikov.goods.Egg;
+import ru.milandr.courses.farm.sitnikov.goods.Milk;
 import ru.milandr.courses.farm.sitnikov.goods.SimpleGood;
+import ru.milandr.courses.farm.sitnikov.goods.Wool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,12 @@ public class Farmer implements GenericFarmer {
             return;
         }
         this.isAngry = false;
-        System.out.println(String.format("I've eaten %s! Nice!", good));
+        if (good instanceof Milk) {
+            System.out.println("I'm eatimg milk");
+        } else if (good instanceof Wool) {
+            System.out.println("So good wool! I can make new clothes)");
+        } else if (good instanceof Egg) {
+            System.out.println("Lets make an omlet!");
+        }
     }
 }
