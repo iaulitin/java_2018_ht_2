@@ -4,8 +4,8 @@ package ru.milandr.courses.farm.koliev.Goods;
 public class Milk extends NaturalGood {
 
     public Milk() {
-        setFresh(true);
         setShelfLife(10000);
+        setFresh(true);
     }
 
     @Override

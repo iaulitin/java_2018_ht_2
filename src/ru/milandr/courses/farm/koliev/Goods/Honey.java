@@ -10,6 +10,6 @@ public class Honey extends NaturalGood {
 
     @Override
     public String toString() {
-        return "Honey!";
+        return "Honey";
     }
 }

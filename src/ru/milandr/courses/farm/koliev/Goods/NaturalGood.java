@@ -24,9 +24,9 @@ public class NaturalGood implements Good {
 
     public void eatGood() {
         if(isFresh()) {
-            System.out.println(this + "is very tasty!!!");
+            System.out.println(this + " is very tasty!!!");
         }else
-            System.out.println("Ugh! Faugh!");
+            System.out.println("Ugh! Faugh! " + this + " spoiled. Faugh! It's time to get rid of it!");
     }
     @Override
     public void goRotten() {

@@ -4,7 +4,7 @@ package ru.milandr.courses.farm.koliev.Goods;
 public class Egg extends NaturalGood {
 
     public Egg() {
-        setShelfLife(12000);
+        setShelfLife(18000);
         setFresh(true);
     }
 
