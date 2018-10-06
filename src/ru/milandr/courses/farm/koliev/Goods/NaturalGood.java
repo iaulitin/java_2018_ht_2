@@ -26,7 +26,7 @@ public class NaturalGood implements Good {
         if(isFresh()) {
             System.out.println(this + " is very tasty!!!");
         }else
-            System.out.println("Ugh! Faugh! " + this + " spoiled. Faugh! It's time to get rid of it!");
+            System.out.println("Ugh! Faugh! " + this + " is spoiled. Faugh! It's time to get rid of it!");
     }
     @Override
     public void goRotten() {
