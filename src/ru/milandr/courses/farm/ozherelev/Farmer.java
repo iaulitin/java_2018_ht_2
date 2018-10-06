@@ -43,7 +43,7 @@ public class Farmer implements GenericFarmer {
     public void eatProduct(Good good) {
         AnimalGoods newGood = (AnimalGoods) good;
 
-        if (newGood.isRotten() || newGood.isGoingRotten())
+        if (newGood.isRotten())
         {
             this.moodBad = true;
             System.out.println("I've eaten a bad meal!");
