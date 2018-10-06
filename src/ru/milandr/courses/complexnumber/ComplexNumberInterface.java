@@ -1,5 +1,6 @@
 package ru.milandr.courses.complexnumber;
 
+
 public interface ComplexNumberInterface {
 
     /**
