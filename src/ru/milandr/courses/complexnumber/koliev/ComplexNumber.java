@@ -34,36 +34,52 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
+        if(anotherNumber instanceof ComplexNumber)
         return new ComplexNumber(this.getReal() + ((ComplexNumber)anotherNumber).getReal(),
                 this.getImaginary() + ((ComplexNumber)anotherNumber).getImaginary());
+        else
+            throw new ClassCastException();
     }
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
-        return new ComplexNumber(this.getReal() - ((ComplexNumber)anotherNumber).getReal(),
+        if(anotherNumber instanceof ComplexNumber)
+            return new ComplexNumber(this.getReal() - ((ComplexNumber)anotherNumber).getReal(),
                 this.getImaginary() - ((ComplexNumber)anotherNumber).getImaginary());
+        else
+            throw new ClassCastException();
+
     }
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
-        ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
-        double resRe = this.getReal() * complexNumber.getReal()
-                - this.getImaginary() * complexNumber.getImaginary();
-        double resIm = this.getImaginary() * complexNumber.getReal()
-                + this.getReal() * complexNumber.getImaginary();
-        return new ComplexNumber(resRe, resIm);
+        if(anotherNumber instanceof ComplexNumber) {
+            ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
+            double resRe = this.getReal() * complexNumber.getReal()
+                    - this.getImaginary() * complexNumber.getImaginary();
+            double resIm = this.getImaginary() * complexNumber.getReal()
+                    + this.getReal() * complexNumber.getImaginary();
+            return new ComplexNumber(resRe, resIm);
+        }
+        else
+            throw new ClassCastException();
     }
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
-        ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
-        double resRe = this.getReal() * complexNumber.getReal()
-                + this.getImaginary() * complexNumber.getImaginary();
-        double resIm = this.getImaginary() * complexNumber.getReal()
-                - this.getReal() * complexNumber.getImaginary();
-        double res = complexNumber.getReal() * complexNumber.getReal()
-                + complexNumber.getImaginary() * complexNumber.getImaginary();
-        return new ComplexNumber(resRe/res, resIm/res);    }
+        if (anotherNumber instanceof ComplexNumber) {
+            ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
+            double resRe = this.getReal() * complexNumber.getReal()
+                    + this.getImaginary() * complexNumber.getImaginary();
+            double resIm = this.getImaginary() * complexNumber.getReal()
+                    - this.getReal() * complexNumber.getImaginary();
+            double res = complexNumber.getReal() * complexNumber.getReal()
+                    + complexNumber.getImaginary() * complexNumber.getImaginary();
+            return new ComplexNumber(resRe / res, resIm / res);
+        }
+        else
+            throw new ClassCastException();
+    }
 
     @Override
     public ComplexNumberInterface negate() {

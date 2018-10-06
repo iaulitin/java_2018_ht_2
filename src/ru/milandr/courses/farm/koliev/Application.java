@@ -18,7 +18,6 @@ public class Application {
         Cow cow = new Cow();
         ArrayList<Animal> animals = new ArrayList<>();
 
-        System.out.println("Our farmer start");
         for(int i = 0; i < 5; i++) {
             animals.add(new Cow());
             animals.add(new Chicken());
