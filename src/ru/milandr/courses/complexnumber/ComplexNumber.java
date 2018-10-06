@@ -10,12 +10,12 @@ public class ComplexNumber implements ComplexNumberInterface
 
     public double getReal()
     {
-        return real;
+        return this.real;
     }
 
     public double getImagine()
     {
-        return imagine;
+        return this.imagine;
     }
 
     public void setImagine(double imagine)
