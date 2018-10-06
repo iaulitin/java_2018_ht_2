@@ -37,6 +37,10 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            return this;
+        }
         ComplexNumber another = (ComplexNumber) anotherNumber;
         return new ComplexNumber(this.real + another.getReal(), this.imagine + another.getImagine());
     }
@@ -44,12 +48,20 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            return this;
+        }
         ComplexNumber another = (ComplexNumber) anotherNumber;
         return new ComplexNumber(this.real - another.getReal(), this.imagine - another.getImagine());
     }
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            return this;
+        }
         ComplexNumber another = (ComplexNumber) anotherNumber;
         double newReal = this.real * another.getReal() - this.imagine * another.getImagine();
         double newImagine = this.real * another.getImagine() + this.imagine * another.getReal();
@@ -58,6 +70,10 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            return this;
+        }
         ComplexNumber another = (ComplexNumber) anotherNumber;
         double newReal = (this.getReal() * another.getReal() + this.imagine * another.getImagine()) / another.calculateModulus();
         double newImagine = (this.imagine * another.getReal() - this.real * another.getImagine()) / another.calculateModulus();
