@@ -27,14 +27,6 @@ public class Good implements GoodInterface {
         return itFresh;
     }
 
-    public void eatGood() {
-        if (itFresh) {
-            System.out.println("Great " + this + " is fresh");
-        } else {
-            System.out.println(this + " is spoilt");
-        }
-    }
-
     public void goRotten() {
         Thread myThread = new Thread(new Runnable() {
 

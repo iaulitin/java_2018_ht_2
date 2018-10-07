@@ -36,12 +36,21 @@ public class Application {
         Vasya.collectGoods(wool);
         Vasya.eatProduct(milk);
 
+        System.out.println("Is Vasya angry? " + Vasya.isHeAngry());
+        System.out.println("Is Dan angry? " + Dan.isHeAngry());
+
         Dan.spoilGood(milk);
         Dan.spoilGood(wool);
         if (!milk.isItFresh())
             System.out.println("Angry Dan spoilt: " + milk);
         if (!wool.isItFresh())
             System.out.println("Angry Dan spoilt: " + wool);
+
+        Vasya.eatProduct(milk);
+        Dan.eatProduct(wool);
+
+        System.out.println("Is Dan angry? " + Dan.isHeAngry());
+        System.out.println("Is Vasya angry? " + Vasya.isHeAngry());
 
         ArrayList<Good> goods = new ArrayList<>();
         for (int i = 0; i < 2; i++) {

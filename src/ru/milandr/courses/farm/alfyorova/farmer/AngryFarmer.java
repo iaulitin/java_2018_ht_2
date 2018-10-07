@@ -4,11 +4,15 @@ import ru.milandr.courses.farm.alfyorova.animal.Animal;
 import ru.milandr.courses.farm.alfyorova.animal.Chicken;
 import ru.milandr.courses.farm.alfyorova.animal.Cow;
 import ru.milandr.courses.farm.alfyorova.animal.Sheep;
-import ru.milandr.courses.farm.alfyorova.goods.Eggs;
 import ru.milandr.courses.farm.alfyorova.goods.Good;
-import ru.milandr.courses.farm.alfyorova.goods.Milk;
 
 public class AngryFarmer extends GenericFarmer {
+    private boolean heAngry = true;
+
+    public boolean isHeAngry() {
+        return heAngry;
+    }
+
     public void petAnAnimal(Animal animal) {
         if (animal instanceof Sheep) {
             System.out.println("I hate you, sheep");
@@ -22,7 +26,7 @@ public class AngryFarmer extends GenericFarmer {
 
     public void collectGoods(Good good) {
         good.goRotten();
-        System.out.println("fucking good's collected : " + good);
+        System.out.println("f*cking good's collected : " + good);
     }
 
     public void spoilGood(Good good) {
