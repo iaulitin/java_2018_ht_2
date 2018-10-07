@@ -3,6 +3,8 @@ package ru.milandr.courses.complexnumber.sitnikov;
 import ru.milandr.courses.complexnumber.ComplexNumberInterface;
 
 public class ComplexNumber implements ComplexNumberInterface {
+    public static final String CAST_WARNING = "Warning: anotherNumber isn't instance if ComplexNumber! Returning self";
+    public static final String DIVIDE_WARNING = "Warning: you divides on 0; returning self";
     private double real;
     private double imagine;
 
@@ -38,7 +40,7 @@ public class ComplexNumber implements ComplexNumberInterface {
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber)) {
-            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            System.out.println(CAST_WARNING);
             return this;
         }
         ComplexNumber another = (ComplexNumber) anotherNumber;
@@ -49,7 +51,7 @@ public class ComplexNumber implements ComplexNumberInterface {
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber)) {
-            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            System.out.println(CAST_WARNING);
             return this;
         }
         ComplexNumber another = (ComplexNumber) anotherNumber;
@@ -59,7 +61,7 @@ public class ComplexNumber implements ComplexNumberInterface {
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber)) {
-            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            System.out.println(CAST_WARNING);
             return this;
         }
         ComplexNumber another = (ComplexNumber) anotherNumber;
@@ -71,10 +73,14 @@ public class ComplexNumber implements ComplexNumberInterface {
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber)) {
-            System.out.println("Warning: anotherNumber isn't instance if ComplexNumber! Returning self");
+            System.out.println(CAST_WARNING);
             return this;
         }
         ComplexNumber another = (ComplexNumber) anotherNumber;
+        if(another.calculateModulus() == 0){
+            System.out.println(DIVIDE_WARNING);
+            return this;
+        }
         double newReal = (this.getReal() * another.getReal() + this.imagine * another.getImagine()) / another.calculateModulus();
         double newImagine = (this.imagine * another.getReal() - this.real * another.getImagine()) / another.calculateModulus();
         return new ComplexNumber(newReal, newImagine);
