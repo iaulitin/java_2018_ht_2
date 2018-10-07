@@ -35,65 +35,72 @@ public class ComplexNumber implements ComplexNumberInterface {
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
         if(anotherNumber instanceof ComplexNumber)
-        return new ComplexNumber(this.getReal() + ((ComplexNumber)anotherNumber).getReal(),
-                this.getImaginary() + ((ComplexNumber)anotherNumber).getImaginary());
+        return new ComplexNumber(this.real + ((ComplexNumber)anotherNumber).getReal(),
+                this.imaginary + ((ComplexNumber)anotherNumber).getImaginary());
         else
-            throw new ClassCastException();
+            System.out.println("This class isn't lead to ComplexNumber");
+        return this;
     }
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
         if(anotherNumber instanceof ComplexNumber)
-            return new ComplexNumber(this.getReal() - ((ComplexNumber)anotherNumber).getReal(),
-                this.getImaginary() - ((ComplexNumber)anotherNumber).getImaginary());
+            return new ComplexNumber(this.real - ((ComplexNumber)anotherNumber).getReal(),
+                this.imaginary - ((ComplexNumber)anotherNumber).getImaginary());
         else
-            throw new ClassCastException();
-
+            System.out.println("This class isn't lead to ComplexNumber");
+        return this;
     }
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
         if(anotherNumber instanceof ComplexNumber) {
             ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
-            double resRe = this.getReal() * complexNumber.getReal()
-                    - this.getImaginary() * complexNumber.getImaginary();
-            double resIm = this.getImaginary() * complexNumber.getReal()
-                    + this.getReal() * complexNumber.getImaginary();
+            double resRe = this.real * complexNumber.getReal()
+                    - this.imaginary * complexNumber.getImaginary();
+            double resIm = this.imaginary * complexNumber.getReal()
+                    + this.real * complexNumber.getImaginary();
             return new ComplexNumber(resRe, resIm);
         }
         else
-            throw new ClassCastException();
+            System.out.println("This class isn't lead to ComplexNumber");
+        return this;
     }
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
         if (anotherNumber instanceof ComplexNumber) {
             ComplexNumber complexNumber = (ComplexNumber) anotherNumber;
-            double resRe = this.getReal() * complexNumber.getReal()
-                    + this.getImaginary() * complexNumber.getImaginary();
-            double resIm = this.getImaginary() * complexNumber.getReal()
-                    - this.getReal() * complexNumber.getImaginary();
+            double resRe = this.real * complexNumber.getReal()
+                    + this.imaginary * complexNumber.getImaginary();
+            double resIm = this.imaginary * complexNumber.getReal()
+                    - this.real * complexNumber.getImaginary();
             double res = complexNumber.getReal() * complexNumber.getReal()
                     + complexNumber.getImaginary() * complexNumber.getImaginary();
+            if (res == 0)
+                return new ComplexNumber(resRe > 0 ?
+                        Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY,
+                        resIm > 0 ? Double.POSITIVE_INFINITY : Double.NEGATIVE_INFINITY);
             return new ComplexNumber(resRe / res, resIm / res);
         }
         else
-            throw new ClassCastException();
+            System.out.println("This class isn't lead to ComplexNumber");
+        return this;
     }
 
     @Override
     public ComplexNumberInterface negate() {
-        return new ComplexNumber(0 - getReal(),  0 - getImaginary());
+        return new ComplexNumber( -this.real,  -this.imaginary);
     }
 
     @Override
     public double calculateModulus() {
-        return Math.sqrt(this.getReal() * this.getReal() +
-                      this.getImaginary() * this.getImaginary());
+        return Math.sqrt(this.real * this.real +
+                      this.imaginary * this.imaginary);
     }
 
     @Override
     public double calculateArgument() {
-        return Math.atan2(this.getImaginary(), this.getReal());
+        return Math.atan2(this.imaginary, this.real);
     }
 }
