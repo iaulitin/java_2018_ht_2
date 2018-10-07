@@ -2,13 +2,12 @@ package ru.milandr.courses.farm.YansitovKirill;
 
 import ru.milandr.courses.farm.FarmerJohn;
 import ru.milandr.courses.farm.Good;
-import ru.milandr.courses.farm.YansitovKirill.*;
 import ru.milandr.courses.farm.YansitovKirill.Animals.Bee;
 import ru.milandr.courses.farm.YansitovKirill.Animals.Cow;
 import ru.milandr.courses.farm.YansitovKirill.Animals.Hen;
 
 
-public class Application {
+public class Main {
 
     public static void main(String[] args) {
 

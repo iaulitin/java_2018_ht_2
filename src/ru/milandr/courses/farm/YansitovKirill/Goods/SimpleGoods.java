@@ -20,7 +20,7 @@ public class SimpleGoods implements Good{
         Date data = new Date();
         long currentTime = data.getTime();
 
-        if (currentTime >= timeOfCreation + rottenTime) {
+        if (currentTime >= (timeOfCreation + rottenTime)) {
             return true;
         }
         else {
