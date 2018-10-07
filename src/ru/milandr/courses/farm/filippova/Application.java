@@ -1,16 +1,18 @@
 package ru.milandr.courses.farm.filippova;
 
+import ru.milandr.courses.complexnumber.filippova.ComplexNumber;
+
 public class Application {
 
     public static void main(String[] args) throws InterruptedException {
-       /* ComplexNumber p;
+        ComplexNumber p;
         ComplexNumber c;
         ComplexNumber d;
         ComplexNumber b = new ComplexNumber(3, 4);
 
-        System.out.println(a.calculateModulus());
         System.out.println(b.calculateModulus());
-        a.calculateArgument();
+        System.out.println(b.calculateModulus());
+        b.calculateArgument();
         System.out.println(String.format("%.3f", b.calculateArgument()));
         c = (ComplexNumber)b.negate();
         d = (ComplexNumber)b.add(b);
@@ -19,7 +21,7 @@ public class Application {
         System.out.println(p.getReal()+ "+" +  p.getImage() +  "i");
         b.divide(c);
         b.add(c);
-       */
+
 
         Cow cow = new Cow(10, 2, "Burenka");
         Lama lama = new Lama("grey", 50, false);

@@ -11,7 +11,6 @@ public class ComplexNumber implements ComplexNumberInterface {
         this.image = i;
     }
 
-
     public double getImage() {
         return this.image;
     }
@@ -31,67 +30,61 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
-        try {
-            if (!(anotherNumber instanceof ComplexNumber)) {
-                throw new ClassCastException();
-            }
 
-        } catch (ClassCastException c) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+
             System.out.println("Error");
+            return (anotherNumber);
+
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber sum = new ComplexNumber(this.real + number.getReal(), this.image + number.getImage());
-        return (sum);
+        return sum;
     }
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
-        try {
-            if (!(anotherNumber instanceof ComplexNumber)) {
-                throw new ClassCastException();
-            }
 
-        } catch (ClassCastException c) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
+
             System.out.println("Error");
+            return anotherNumber;
         }
+
+
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber difference = new ComplexNumber(this.real - number.getReal(), this.image - number.getImage());
-        return (difference);
+        return difference;
     }
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
-        try {
-            if (!(anotherNumber instanceof ComplexNumber)) {
-                throw new ClassCastException();
-            }
-        } catch (ClassCastException c) {
+
+        if (!(anotherNumber instanceof ComplexNumber)) {
+
             System.out.println("Error");
+            return anotherNumber;
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber multiplication = new ComplexNumber(this.real * number.getReal() - this.image * number.getImage(), this.real * number.getImage() + this.image * number.getReal());
-        return (multiplication);
+        return multiplication;
     }
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
-        try {
-            if (!(anotherNumber instanceof ComplexNumber)) {
-                throw new ClassCastException();
-            }
-
-        } catch (ClassCastException c) {
+        if (!(anotherNumber instanceof ComplexNumber)) {
             System.out.println("Error");
+            return anotherNumber;
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber division = new ComplexNumber((this.real * number.getReal() + this.image * number.getImage()) / (number.getReal() * number.getReal() + number.getImage() * number.getImage()), (number.getReal() * this.image - this.real * number.getImage()) / (number.getReal() * number.getReal() + number.getImage() * number.getImage()));
-        return (division);
+        return division;
     }
 
     @Override
     public ComplexNumberInterface negate() {
         ComplexNumber negation = new ComplexNumber(-this.real, -this.image);
-        return (negation);
+        return negation;
 
     }
 
@@ -111,11 +104,11 @@ public class ComplexNumber implements ComplexNumberInterface {
             System.out.println("Argument is not defined");
             return 0;
         }
-
-        return (Math.atan2(this.image, this.real));
+        return Math.atan2(this.image, this.real);
 
 
     }
 
 
 }
+

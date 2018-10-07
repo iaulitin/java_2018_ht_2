@@ -61,6 +61,6 @@ public class Lama implements Animal {
         Good wool = new Wool(false, false, 5000);
 
 
-        return (wool);
+        return wool;
     }
 }

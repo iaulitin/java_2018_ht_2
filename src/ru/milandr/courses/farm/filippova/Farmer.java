@@ -49,7 +49,6 @@ public class Farmer implements GenericFarmer {
         animal.produceSound();
         System.out.printf("%s", "Hello, " + animal.getClass().getSimpleName() + "\n");
 
-
     }
 
 

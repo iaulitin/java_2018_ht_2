@@ -56,6 +56,6 @@ public class Cow implements Animal {
     @Override
     public Good produceGoods() {
         Good milk = new Milk(false, false, 2000);
-        return (milk);
+        return milk;
     }
 }

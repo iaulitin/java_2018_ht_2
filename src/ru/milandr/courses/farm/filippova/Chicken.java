@@ -43,6 +43,6 @@ public class Chicken implements Animal {
     @Override
     public Good produceGoods() {
         Good eggs = new Eggs(false, false, 3000);
-        return (eggs);
+        return eggs;
     }
 }
