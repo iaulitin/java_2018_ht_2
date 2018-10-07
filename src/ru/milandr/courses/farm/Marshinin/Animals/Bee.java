@@ -6,7 +6,7 @@ import ru.milandr.courses.farm.Marshinin.Goods.Honey;
 
 public class Bee implements Animal {
 
-    public void pollinateTheFlower() {
+    public static void pollinateTheFlower() {
         System.out.println("The Flower is pollinated");
     }
 

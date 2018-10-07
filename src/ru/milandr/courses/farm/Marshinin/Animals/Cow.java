@@ -6,7 +6,7 @@ import ru.milandr.courses.farm.Marshinin.Goods.Milk;
 
 public class Cow implements Animal {
 
-    public void butt() {
+    public static void butt() {
         System.out.println("The cow is angry. It butts.");
     }
 

@@ -6,7 +6,7 @@ import ru.milandr.courses.farm.Marshinin.Goods.Eggs;
 
 public class Chicken implements Animal {
 
-    public void killWorm() {
+    public static void killWorm() {
         System.out.println("The worm is killed");
     }
 
