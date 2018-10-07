@@ -34,7 +34,7 @@ public class ComplexNumber implements ComplexNumberInterface {
         if (!(anotherNumber instanceof ComplexNumber)) {
 
             System.out.println("Error");
-            return (anotherNumber);
+            return  this;
 
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
@@ -48,7 +48,7 @@ public class ComplexNumber implements ComplexNumberInterface {
         if (!(anotherNumber instanceof ComplexNumber)) {
 
             System.out.println("Error");
-            return anotherNumber;
+            return  this;
         }
 
 
@@ -63,7 +63,7 @@ public class ComplexNumber implements ComplexNumberInterface {
         if (!(anotherNumber instanceof ComplexNumber)) {
 
             System.out.println("Error");
-            return anotherNumber;
+            return  this;
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber multiplication = new ComplexNumber(this.real * number.getReal() - this.image * number.getImage(), this.real * number.getImage() + this.image * number.getReal());
@@ -74,7 +74,7 @@ public class ComplexNumber implements ComplexNumberInterface {
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber)) {
             System.out.println("Error");
-            return anotherNumber;
+            return  this;
         }
         ComplexNumber number = (ComplexNumber) anotherNumber;
         ComplexNumber division = new ComplexNumber((this.real * number.getReal() + this.image * number.getImage()) / (number.getReal() * number.getReal() + number.getImage() * number.getImage()), (number.getReal() * this.image - this.real * number.getImage()) / (number.getReal() * number.getReal() + number.getImage() * number.getImage()));
