@@ -36,6 +36,12 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
+        if(!(anotherNumber instanceof ComplexNumber))
+        {
+            System.out.println("Error: false data");
+            return null;
+        }
+
         ComplexNumber another = (ComplexNumber) anotherNumber;
         return new ComplexNumber(real + another.real, imagine + another.real);
     }
@@ -43,6 +49,12 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
+        if(!(anotherNumber instanceof ComplexNumber))
+        {
+            System.out.println("Error: false data");
+            return null;
+        }
+
         ComplexNumber another = (ComplexNumber) anotherNumber;
 
         double ret_real    = real*another.real - imagine*another.imagine;
@@ -54,9 +66,14 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
+        if(!(anotherNumber instanceof ComplexNumber))
+        {
+            System.out.println("Error: false data");
+            return null;
+        }
         ComplexNumber another = (ComplexNumber) anotherNumber;
 
-        double denominator = Math.pow(another.real, 2) - Math.pow(another.imagine, 2);
+        double denominator = Math.pow(another.real, 2) + Math.pow(another.imagine, 2);
         if(denominator == 0)
         {
             System.out.println("Error: Zero division");
@@ -77,6 +94,12 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
+        if(!(anotherNumber instanceof ComplexNumber))
+        {
+            System.out.println("Error: false data");
+            return null;
+        }
+
         ComplexNumber another = (ComplexNumber) anotherNumber;
         return new ComplexNumber(real - another.real, imagine - another.real);
     }
@@ -104,11 +127,11 @@ public class ComplexNumber implements ComplexNumberInterface {
             double atan = Math.atan(imagine/real);
             if(imagine >= 0)
             {
-                return -atan + Math.PI/2;
+                return Math.PI+atan;
             }
             else
             {
-                return -(atan + Math.PI/2);
+                return -(Math.PI-atan);
             }
         }
 
