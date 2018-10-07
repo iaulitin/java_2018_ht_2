@@ -72,7 +72,7 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     public double calculateArgument() {
         if (this.Re != 0)
-            return Math.atan(this.Im / this.Re); //deg
+            return Math.atan2(this.Im, this.Re); //deg
         else
             return 1;
     }

@@ -3,16 +3,12 @@ package ru.milandr.courses.farm.alfyorova.goods;
 import ru.milandr.courses.farm.alfyorova.GoodInterface;
 
 public class Good implements GoodInterface {
-    private String goodName;
     private boolean itFresh;
     private int timeOfBeingFresh; //days
 
-    public void setGoodName(String goodName) {
-        this.goodName = goodName;
-    }
-
-    public String getGoodName() {
-        return goodName;
+    public Good() {
+        itFresh = true;
+        timeOfBeingFresh = 1;
     }
 
     public int getTimeOfBeingFresh() {
@@ -27,27 +23,32 @@ public class Good implements GoodInterface {
         this.timeOfBeingFresh = timeOfBeingFresh;
     }
 
+    public boolean isItFresh() {
+        return itFresh;
+    }
+
     public void eatGood() {
         if (itFresh) {
-            System.out.println("Great " + this.goodName);
+            System.out.println("Great " + this + " is fresh");
         } else {
-            System.out.println(this.goodName + " is spoilt");
+            System.out.println(this + " is spoilt");
         }
     }
 
     public void goRotten() {
-        new Thread(new Runnable() {
+        Thread myThread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try {
-                    Thread.sleep( getTimeOfBeingFresh());
+                    Thread.sleep(getTimeOfBeingFresh());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 setItFresh(false);
                 Thread.yield();
             }
-        }).start();
+        });
+        myThread.start();
     }
 }
