@@ -45,8 +45,11 @@ public class ComplexNumber implements ComplexNumberInterface
             return new ComplexNumber(newReal, newImagine);
         }
 
-        else throw new ClassCastException();
-
+        else
+        {
+            System.out.println("add error: can't make Complex number from anotherNumber");
+            return anotherNumber;
+        }
     }
 
     @Override
@@ -60,7 +63,11 @@ public class ComplexNumber implements ComplexNumberInterface
             return new ComplexNumber(newReal, newImagine);
         }
 
-        else throw new ClassCastException();
+        else
+        {
+            System.out.println("substract error: can't make Complex number from anotherNumber");
+            return anotherNumber;
+        }
 
     }
 
@@ -75,7 +82,11 @@ public class ComplexNumber implements ComplexNumberInterface
             return new ComplexNumber(newReal, newImagine);
         }
 
-        else throw new ClassCastException();
+        else
+        {
+            System.out.println("multiply error: can't make ComplexNumber from anotherNumber");
+            return anotherNumber;
+        }
 
     }
 
@@ -100,7 +111,11 @@ public class ComplexNumber implements ComplexNumberInterface
             return new ComplexNumber(newReal, newImagine);
         }
 
-        else throw new ClassCastException();
+        else
+        {
+            System.out.println("divide error: can't make Complex number from anotherNumber");
+            return anotherNumber;
+        }
 
     }
 
