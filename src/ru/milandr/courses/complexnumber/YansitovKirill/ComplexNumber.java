@@ -1,4 +1,6 @@
-import src.ComplexNumberInterface;
+package ru.milandr.courses.complexnumber.YansitovKirill;
+
+import ru.milandr.courses.complexnumber.ComplexNumberInterface;
 
 public class ComplexNumber implements ComplexNumberInterface {
     private double real;
@@ -70,9 +72,8 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface negate() {
-        return new ComplexNumber(real, -imagine);
+        return new ComplexNumber(-real, -imagine);
     }
-
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
