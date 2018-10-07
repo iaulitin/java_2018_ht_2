@@ -34,10 +34,11 @@ public class Application {
         farmer.farmerMood();
 
         Bee.pollinateTheFlower();
-        goat.showTongue();
-        System.out.println(cow.whatCowHeard("bebebe"));
-        dan.petAnAnimal(cow);
-        dan.petAnAnimal(hen);
-        dan.petAnAnimal(goat);
+        Cow.butt();
+        Chicken.killWorm();
+
+        farmer.petAnAnimal(cow);
+        farmer.petAnAnimal(bee);
+        farmer.petAnAnimal(chicken);
     }
 }
