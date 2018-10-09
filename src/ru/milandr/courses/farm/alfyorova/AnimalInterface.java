@@ -1,16 +1,18 @@
-package ru.milandr.courses.farm;
+package ru.milandr.courses.farm.alfyorova;
+
+import ru.milandr.courses.farm.alfyorova.goods.Good;
 
 /**
  * Interface, representing generic animal from the farm.
  * <p>
  * All classes, implementing the interface, should have non-empty
- * implementation for all generic "Animal" methods.
+ * implementation for all generic "AnimalInterface" methods.
  *
  * Note: Each implementation of the interface should have some specific methods, which
- * are representative for this Animal Type (e.g. takeNapInDirt for Pigs)!
+ * are representative for this AnimalInterface Type (e.g. takeNapInDirt for Pigs)!
  */
-public interface Animal {
 
+public interface AnimalInterface {
     /**
      * Prints a sound, that the animal can produce.
      */

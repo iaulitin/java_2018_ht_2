@@ -1,11 +1,13 @@
-package ru.milandr.courses.farm;
+package ru.milandr.courses.farm.alfyorova;
+
+import ru.milandr.courses.farm.alfyorova.animal.Animal;
+import ru.milandr.courses.farm.alfyorova.goods.Good;
 
 /**
  * The classes implementing the interface should imitate
  * behaviour of a farmer, doing his regular stuff.
  */
-public interface GenericFarmer {
-
+public interface GenericFarmerInterface {
     /**
      * A farmer collect goods produced by some Animal.
      * The farmer should print a specific type of a good after collecting it.

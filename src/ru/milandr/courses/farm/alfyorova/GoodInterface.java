@@ -1,10 +1,11 @@
-package ru.milandr.courses.farm;
+package ru.milandr.courses.farm.alfyorova;
 
+import ru.milandr.courses.farm.alfyorova.goods.Good;
+import ru.milandr.courses.farm.alfyorova.farmer.GenericFarmer;
 /**
  * Common interface representing a good (Milk, eggs, etc) produced by an animal.
  */
-public interface Good {
-
+public interface GoodInterface {
     /**
      * After having this method called once,
      * the {@link Good} makes a {@link GenericFarmer} react

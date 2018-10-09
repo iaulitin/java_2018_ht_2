@@ -1,7 +1,6 @@
-package ru.milandr.courses.complexnumber;
+package ru.milandr.courses.complexnumber.alfyorova;
 
 public interface ComplexNumberInterface {
-
     /**
      * @param anotherNumber a number to add to current number
      * @return complex number representing operation result
@@ -40,4 +39,9 @@ public interface ComplexNumberInterface {
      * @return argument value for current complex number
      */
     double calculateArgument();
+
+    double getRe();
+    double getIm();
+    void setIm(double im);
+    void setRe(double re);
 }
