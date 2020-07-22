@@ -31,13 +31,17 @@ public class Farmer implements GenericFarmer {
     }
 
     public void collectGoods(Good good) {
+        if (good == null) {
+            System.err.println("Null goods found");
+            return;
+        }
         System.out.print("Collected: ");
         if (good instanceof Milk) {
             System.out.format("%.2f Liters of milk\n", ((Milk) good).getVolume());
         } else if (good instanceof Egg) {
             System.out.format("%s egg\n", ((Egg) good).getColor());
         } else if (good instanceof Meat) {
-            System.out.format("%.2f Kilos of meat from %s\n", ((Meat) good).getProducer());
+            System.out.format("%.2f Kilos of meat from %s\n", ((Meat) good).getWeight(), ((Meat) good).getProducer());
         } else {
             System.err.println("undefined good");
         }
@@ -45,9 +49,9 @@ public class Farmer implements GenericFarmer {
 
     private void sayHelloToAnimal(Animal animal) {
         if (animal instanceof Cock) {
-            System.out.println("Hello cock");
+            System.out.println("Hello cock, " + ((Cock)animal).getName());
         } else if (animal instanceof Cow) {
-            System.out.println("Hello cow");
+            System.out.println("Hello cow, " + ((Cow)animal).getName());
         }
     }
 
@@ -58,15 +62,14 @@ public class Farmer implements GenericFarmer {
     }
 
     private void sayNotHungryPhrase() {
-        System.out.println("I'm not hungry, why are you feeding me?");
+//        System.out.println("I'm not hungry, why are you feeding me?");
     }
 
     @Override
     public void eatProduct(Good good) {
         if (good == null) {
             System.err.println("null good for eat given");
-        }
-        if (good instanceof Milk) {
+        } else if (good instanceof Milk) {
             if (!hungry) {
                 sayNotHungryPhrase();
             }
@@ -93,7 +96,7 @@ public class Farmer implements GenericFarmer {
                 }
                 ((Egg) good).eat();
             } else {
-                System.err.println("I'm trying to eat nothing");
+                System.err.println("This good is already eaten");
             }
             hungry = false;
         } else if (good instanceof Meat) {
@@ -108,7 +111,7 @@ public class Farmer implements GenericFarmer {
                 }
                 ((Meat) good).eat();
             } else {
-                System.err.println("I'm trying to eat nothing");
+                System.err.println("This good is already eaten");
             }
             hungry = false;
         } else {

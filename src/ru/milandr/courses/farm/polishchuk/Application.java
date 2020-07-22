@@ -19,6 +19,7 @@ public class Application {
         mcDonald.collectGoods(producedGood);
         mcDonald.eatProduct(producedGood);
 
+        mcDonald.petAnAnimal(instein);
         producedGood = instein.produceGoods();
         mcDonald.collectGoods(producedGood);
         mcDonald.eatProduct(producedGood);
@@ -33,7 +34,6 @@ public class Application {
         producedGood = ryaba.produceGoods();
         producedGood.goRotten();
         mcDonald.collectGoods(producedGood);
-        mcDonald.eatProduct(producedGood);
         mcDonald.eatProduct(producedGood);
 
         mcDonald.petAnAnimal(ryaba);

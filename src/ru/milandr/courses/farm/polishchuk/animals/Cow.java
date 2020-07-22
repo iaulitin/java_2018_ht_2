@@ -58,31 +58,41 @@ public class Cow implements Animal {
     }
 
     public void produceSound() {
-        System.out.println("Moo");
+        if (!this.alive) {
+            System.err.println("*dead, no sound produced*");
+        } else {
+            System.out.println("Moo");
+        }
     }
 
     public Good produceGoods() {
         double milkVolume = 5.;
 
-        if (this.sex.compareToIgnoreCase("female") != 0) {
+        if (this.sex.compareToIgnoreCase("female") != 0 && this.alive) {
             this.kill();
-            return new Meat("Cow", this.weight);
         }
-        if (this.alive) {
-            if (this.weight > 400. || this.weight > 300. && Math.random() > 0.4) {
+        if (!this.alive) {
+            if (this.weight > 0.) {
+                Meat meat = new Meat("Cow", this.weight);
+                this.weight = 0.;
+                return meat;
+            }
+            return null;
+        } else {
+            if (this.weight > 400. || Math.random() >= 0.3) {
                 this.weight -= milkVolume;
                 if (this.weight < 200.) {
                     this.kill();
                 }
                 return new Milk(milkVolume);
             }
-        } else if (this.weight > 0.) {
-            return new Meat("Cow", this.weight);
         }
         return null;
     }
 
     public void feed(double foodWeight) {
+        if (!this.alive)
+            return;
         if (foodWeight > 0) {
             this.weight += foodWeight;
             if (this.weight > 1000.) {

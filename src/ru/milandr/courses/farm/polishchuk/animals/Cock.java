@@ -53,11 +53,14 @@ public class Cock implements Animal {
     public Cock() {
         this.name = "";
         this.weight = -1;
+        this.alive = true;
         this.sex = "";
     }
 
     public void produceSound() {
-        if (this.sex.compareToIgnoreCase("male") == 0) {
+        if (!this.alive) {
+            System.err.println("*dead, no sound produced*");
+        } else if (this.sex.compareToIgnoreCase("male") == 0) {
             System.out.println("Nado v cochalochky");
         } else if (this.sex.compareToIgnoreCase("female") == 0) {
             System.out.println("Co-Co-Co");
@@ -69,29 +72,34 @@ public class Cock implements Animal {
     public Good produceGoods() {
         double eggWeight = 0.05;
 
-        if (this.sex.compareToIgnoreCase("female") != 0) {
+        if (this.sex.compareToIgnoreCase("female") != 0 && this.alive) {
             this.kill();
-            return new Meat("Cock", this.weight);
         }
-        if (this.alive) {
-            if (this.weight > 4. || this.weight > 2.5 && Math.random() > 0.4) {
-                this.weight -= eggWeight;
-                if (weight < 1.) {
-                    this.kill();
-                }
-                if (Math.random() < 0.2) {
-                    return new Egg("black", eggWeight);
-                } else {
-                    return new Egg("white", eggWeight);
-                }
+        if (!this.alive) {
+            if (this.weight > 0.) {
+                Meat meat = new Meat("Cock", this.weight);
+                this.weight = 0.;
+                return meat;
             }
-        } else if (this.weight > 0.) {
-            return new Meat("Cock", this.weight);
+            return null;
+        }
+        if (this.weight > 4. || Math.random() > 0.3) {
+            this.weight -= eggWeight;
+            if (weight < 1.) {
+                this.kill();
+            }
+            if (Math.random() < 0.2) {
+                return new Egg("black", eggWeight);
+            } else {
+                return new Egg("white", eggWeight);
+            }
         }
         return null;
     }
 
     public void feed(double foodWeight) {
+        if (!this.alive)
+            return;
         if (foodWeight > 0) {
             this.weight += foodWeight;
             if (this.weight > 10.) {
