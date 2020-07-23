@@ -21,46 +21,49 @@ public class ComplexNumber implements ComplexNumberInterface {
         this.im = number.im;
     }
 
-
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber))
             return null;
-        ComplexNumber result = new ComplexNumber(this);
+        ComplexNumber numberToAdd = (ComplexNumber) anotherNumber;
+        ComplexNumber result = new ComplexNumber();
 
-        result.re += ((ComplexNumber) anotherNumber).re;
-        result.im += ((ComplexNumber) anotherNumber).im;
+        result.re = this.re + numberToAdd.re;
+        result.im = this.im + numberToAdd.im;
         return result;
     }
 
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber))
             return null;
-        ComplexNumber result = new ComplexNumber(this);
+        ComplexNumber numberToSub = (ComplexNumber) anotherNumber;
+        ComplexNumber result = new ComplexNumber();
 
-        result.re -= ((ComplexNumber) anotherNumber).re;
-        result.im -= ((ComplexNumber) anotherNumber).im;
+        result.re = this.re - numberToSub.re;
+        result.im = this.re - numberToSub.im;
         return result;
     }
 
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber))
             return null;
+        ComplexNumber numberToMul = (ComplexNumber) anotherNumber;
         ComplexNumber result = new ComplexNumber();
 
-        result.re = this.re * ((ComplexNumber) anotherNumber).re - this.im * ((ComplexNumber) anotherNumber).im;
-        result.im = this.re * ((ComplexNumber) anotherNumber).im + this.im * ((ComplexNumber) anotherNumber).re;
+        result.re = this.re * numberToMul.re - this.im * numberToMul.im;
+        result.im = this.re * numberToMul.im + this.im * numberToMul.re;
         return result;
     }
 
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
         if (!(anotherNumber instanceof ComplexNumber))
             return null;
+        ComplexNumber numberToDiv = (ComplexNumber) anotherNumber;
         ComplexNumber result = new ComplexNumber();
         double denominator;
 
-        denominator = Math.pow(((ComplexNumber) anotherNumber).re, 2) + Math.pow(((ComplexNumber) anotherNumber).im, 2);
-        result.re = (this.re * ((ComplexNumber) anotherNumber).re + this.im * ((ComplexNumber) anotherNumber).im) / denominator;
-        result.im = (this.im * ((ComplexNumber) anotherNumber).re - this.re * ((ComplexNumber) anotherNumber).im) / denominator;
+        denominator = Math.pow(numberToDiv.re, 2) + Math.pow(numberToDiv.im, 2);
+        result.re = (this.re * numberToDiv.re + this.im * numberToDiv.im) / denominator;
+        result.im = (this.im * numberToDiv.re - this.re * numberToDiv.im) / denominator;
         return result;
     }
 
