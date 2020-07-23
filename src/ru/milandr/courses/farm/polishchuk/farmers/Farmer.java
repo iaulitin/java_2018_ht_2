@@ -7,6 +7,13 @@ import ru.milandr.courses.farm.polishchuk.goods.*;
 import ru.milandr.courses.farm.polishchuk.animals.*;
 
 public class Farmer implements GenericFarmer {
+    private final String ATE_ROTTEN_PHRASE = "Ugh, %s, is rotten";
+    private final String ATE_GOOD_PHRASE = "Nice %s";
+    private final String NULL_GOOD_FOUND = "Null good for eat given";
+    private final String FOUND_FOOD_EATEN = "I already ate this \"%s\" food";
+    private final String UNDEFINED_GOOD = "I prefer not to eat strange objects";
+    private final String NOT_HUNGRY_PHRASE = "I'm not hungry, why are you feeding me?";
+
     private String name;
     private boolean hungry = true;
 
@@ -30,9 +37,10 @@ public class Farmer implements GenericFarmer {
         hungry = true;
     }
 
+    @Override
     public void collectGoods(Good good) {
         if (good == null) {
-            System.err.println("Null goods found");
+            System.err.println(NULL_GOOD_FOUND);
             return;
         }
         System.out.print("Collected: ");
@@ -47,75 +55,41 @@ public class Farmer implements GenericFarmer {
         }
     }
 
-    private void sayHelloToAnimal(Animal animal) {
-        if (animal instanceof Cock) {
-            System.out.println("Hello cock, " + ((Cock)animal).getName());
-        } else if (animal instanceof Cow) {
-            System.out.println("Hello cow, " + ((Cow)animal).getName());
-        }
-    }
-
     @Override
     public void petAnAnimal(Animal animal) {
-        this.sayHelloToAnimal(animal);
+        System.out.println("Hello, " + animal.getClass().getName());
         animal.produceSound();
-    }
-
-    private void sayNotHungryPhrase() {
-//        System.out.println("I'm not hungry, why are you feeding me?");
     }
 
     @Override
     public void eatProduct(Good good) {
         if (good == null) {
-            System.err.println("null good for eat given");
-        } else if (good instanceof Milk) {
-            if (!hungry) {
-                sayNotHungryPhrase();
-            }
-            if (!((Milk) good).isEaten()) {
-                if (((Milk) good).isRotten()) {
-                    System.out.println("Ugh, kefir((((");
-                } else {
-                    System.out.println("Nice milk");
-                }
-                ((Milk) good).eat();
-            } else {
-                System.err.println("I'm trying to eat nothing");
-            }
-            hungry = false;
-        } else if (good instanceof Egg) {
-            if (!hungry) {
-                sayNotHungryPhrase();
-            }
-            if (!((Egg) good).isEaten()) {
-                if (((Egg) good).isRotten()) {
-                    System.out.println("Disgusting taste end smells like trash, I should have understood");
-                } else {
-                    System.out.println("Mmmmm, eggs");
-                }
-                ((Egg) good).eat();
-            } else {
-                System.err.println("This good is already eaten");
-            }
-            hungry = false;
-        } else if (good instanceof Meat) {
-            if (!hungry) {
-                sayNotHungryPhrase();
-            }
-            if (!((Meat) good).isEaten()) {
-                if (((Meat) good).isRotten()) {
-                    System.out.println("I'm really angry, this meat is actually dead");
-                } else {
-                    System.out.println("Nice meat from " + ((Meat) good).getProducer());
-                }
-                ((Meat) good).eat();
-            } else {
-                System.err.println("This good is already eaten");
-            }
-            hungry = false;
-        } else {
-            System.err.println("I prefer not to eat strange objects");
+            System.err.println(NULL_GOOD_FOUND);
+            return;
         }
+
+        if (!(good instanceof ExtendedGood)) {
+            System.err.println(UNDEFINED_GOOD);
+            return;
+        }
+
+        if (!hungry) {
+            System.out.println(NOT_HUNGRY_PHRASE);
+            return;
+        }
+
+        ExtendedGood extendedGood = (ExtendedGood) good;
+
+        if (!extendedGood.isEaten()) {
+            if (extendedGood.isRotten()) {
+                System.out.format(ATE_ROTTEN_PHRASE + '\n', extendedGood.getRottenName());
+            } else {
+                System.out.format(ATE_GOOD_PHRASE + '\n', extendedGood.getGoodName());
+            }
+            extendedGood.eat();
+        } else {
+            System.err.format(FOUND_FOOD_EATEN + '\n', extendedGood.getGoodName());
+        }
+        hungry = false;
     }
 }
