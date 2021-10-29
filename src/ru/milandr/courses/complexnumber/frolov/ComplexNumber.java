@@ -14,8 +14,8 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public String toString() {
-        String singOfImagine = imagine > 0 ? "+" : "-";
-        return String.format("z = %.2f %s %.2f i", real, singOfImagine, Math.abs(imagine));
+        String signOfImagine = imagine > 0 ? "+" : "-";
+        return String.format("z = %.2f %s %.2f i", real, signOfImagine, Math.abs(imagine));
     }
 
     @Override
@@ -25,7 +25,8 @@ public class ComplexNumber implements ComplexNumberInterface {
             System.out.println("Wrong instance");
             return null;
         }
-        return new ComplexNumber((real + ((ComplexNumber) anotherNumber).real), (imagine + ((ComplexNumber) anotherNumber).imagine));
+        ComplexNumber myNumber = (ComplexNumber) anotherNumber;
+        return new ComplexNumber((real + myNumber.real), (imagine + myNumber.imagine));
     }
 
     @Override
@@ -34,7 +35,8 @@ public class ComplexNumber implements ComplexNumberInterface {
             System.out.println("Wrong instance");
             return null;
         }
-        return new ComplexNumber((real - ((ComplexNumber) anotherNumber).real), (imagine - ((ComplexNumber) anotherNumber).imagine));
+        ComplexNumber myNumber = (ComplexNumber) anotherNumber;
+        return new ComplexNumber((real - myNumber.real), (imagine - myNumber.imagine));
     }
 
     @Override
@@ -43,8 +45,9 @@ public class ComplexNumber implements ComplexNumberInterface {
             System.out.println("Wrong instance");
             return null;
         }
-        double newReal = (real * ((ComplexNumber) anotherNumber).real - imagine * ((ComplexNumber) anotherNumber).imagine);
-        double newImagine = real * ((ComplexNumber) anotherNumber).imagine + imagine * ((ComplexNumber) anotherNumber).real;
+        ComplexNumber myNumber = (ComplexNumber) anotherNumber;
+        double newReal = (real * myNumber.real - imagine * myNumber.imagine);
+        double newImagine = real * myNumber.imagine + imagine * myNumber.real;
         return new ComplexNumber(newReal, newImagine);
     }
 
@@ -54,8 +57,10 @@ public class ComplexNumber implements ComplexNumberInterface {
             System.out.println("Wrong instance");
             return null;
         }
-        double newReal = (real * ((ComplexNumber) anotherNumber).real + imagine * ((ComplexNumber) anotherNumber).real) / (Math.pow(((ComplexNumber) anotherNumber).real, 2) + Math.pow(((ComplexNumber) anotherNumber).imagine, 2));
-        double newImagine = (((ComplexNumber) anotherNumber).real * imagine - real * ((ComplexNumber) anotherNumber).imagine) / (Math.pow(((ComplexNumber) anotherNumber).real, 2) + Math.pow(((ComplexNumber) anotherNumber).imagine, 2));
+        ComplexNumber myNumber = (ComplexNumber) anotherNumber;
+        double v = Math.pow(myNumber.real, 2) + Math.pow(myNumber.imagine, 2);
+        double newReal = (real * myNumber.real + imagine * myNumber.real) / v;
+        double newImagine = (myNumber.real * imagine - real * (myNumber.imagine)) / v;
         return new ComplexNumber(newReal, newImagine);
     }
 
