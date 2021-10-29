@@ -1,21 +1,21 @@
 package ru.milandr.courses.farm.frolov.goods;
 
-
-import ru.milandr.courses.farm.frolov.animals.Pig;
-import ru.milandr.courses.farm.frolov.animals.SuperAnimal;
+import ru.milandr.courses.farm.frolov.FarmerAbobus;
 
 public class Meat extends SuperGood {
-    private static final long extendedTime = 20000;
+    private static final long MEAT_EXTENDED_TIME_MS = 7500;
 
-    public Meat(SuperAnimal animal) {
-        super(animal);
-        animal.produceGoods();
+    public Meat() {
+        extendedTime = MEAT_EXTENDED_TIME_MS;
     }
 
-    public boolean isRotten() {
-        long curTime = System.currentTimeMillis();
-        isRotten = curTime > getCreationTime() + extendedTime;
-        return isRotten;
+    @Override
+    public void getCollected(FarmerAbobus farmer) {
+        System.out.println(farmer.getName() + " заколол порося");
     }
 
+    @Override
+    public String toString() {
+        return "мясо";
+    }
 }

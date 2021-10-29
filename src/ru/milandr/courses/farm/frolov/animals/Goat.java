@@ -3,16 +3,10 @@ package ru.milandr.courses.farm.frolov.animals;
 import ru.milandr.courses.farm.Good;
 import ru.milandr.courses.farm.frolov.goods.Cheese;
 
-
 public class Goat extends SuperAnimal {
 
     public Goat(String name) {
         super(name);
-    }
-
-    @Override
-    public String toString() {
-        return "Коза " + getName();
     }
 
     @Override
@@ -22,6 +16,11 @@ public class Goat extends SuperAnimal {
 
     @Override
     public Good produceGoods() {
-        return new Cheese(this);
+        return new Cheese();
+    }
+
+    @Override
+    public String toString() {
+        return "Коза " + name;
     }
 }

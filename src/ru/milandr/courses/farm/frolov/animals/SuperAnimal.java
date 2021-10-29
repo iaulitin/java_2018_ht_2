@@ -3,22 +3,17 @@ package ru.milandr.courses.farm.frolov.animals;
 import ru.milandr.courses.farm.Animal;
 import ru.milandr.courses.farm.Good;
 
-public class SuperAnimal implements Animal {
-    private String name;
+public abstract class SuperAnimal implements Animal {
+    protected String name;
 
     public SuperAnimal(String name) {
         this.name = name;
     }
 
-    @Override
-    public void produceSound() {
-        System.out.println("какие-то животные звуки");
-    }
+    //стоит ли указывать наследуемый абстрактный метод, если здесь он не переписывается, или лучше сразу переписать в дочернем классе
+    public abstract void produceSound();
 
-    @Override
-    public Good produceGoods() {
-        return null;
-    }
+    public abstract Good produceGoods();
 
     public String getName() {
         return name;

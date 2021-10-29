@@ -1,40 +1,41 @@
 package ru.milandr.courses.farm.frolov.goods;
 
 import ru.milandr.courses.farm.Good;
-import ru.milandr.courses.farm.frolov.animals.SuperAnimal;
+import ru.milandr.courses.farm.frolov.FarmerAbobus;
 
 public abstract class SuperGood implements Good {
-    protected boolean isRotten = false;
-    private static short count = 0;
-    private long creationTime;
-    private SuperAnimal animal;
+    private boolean isRotten;
+    private final long creationTime;
+    protected long extendedTime;
 
-
-    public SuperGood(SuperAnimal animal) {
-        count++;
-        this.creationTime = System.currentTimeMillis();
-        this.animal = animal;
+    public SuperGood() {
+        isRotten = false;
+        creationTime = System.currentTimeMillis();
     }
 
     @Override
     public void goRotten() {
-        isRotten = true;
-        count--;
+        if (isRotten) {
+            System.out.println(this + " уже испорчено");
+            return;
+        }
+        if (checkTime()) {
+            System.out.println(this + " испортилось");
+            return;
+        }
+        System.out.println("Срок годности" + this + " еще не закончился");
     }
 
-    public void getGood() {
-        System.out.println("Получена продукция, всего " + count + " шт.");
+
+    public abstract void getCollected(FarmerAbobus farmer);
+
+    public boolean isRotten() {
+        isRotten = checkTime();
+        return isRotten;
     }
 
-    public void setRotten(boolean rotten) {
-        isRotten = rotten;
+    private boolean checkTime() {
+        return System.currentTimeMillis() > creationTime + extendedTime;
     }
 
-    public long getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(long creationTime) {
-        this.creationTime = creationTime;
-    }
 }
