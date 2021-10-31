@@ -2,15 +2,10 @@ package ru.milandr.courses.farm.tkhorzhevskiy.goods;
 
 
 public class Meat extends ParentGood {
+    private static final String MeatName = "Мясо";
 
     public Meat() {
-        isRotten(false);
-        setName("Мясо");
-        setRotTime(11);
-        setGatherTime(5);
+        name=MeatName;
     }
-    @Override
-    public String toString() {
-        return this.getName();
-    }
+
 }

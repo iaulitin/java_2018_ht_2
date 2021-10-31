@@ -5,8 +5,8 @@ import ru.milandr.courses.complexnumber.ComplexNumberInterface;
 public class ComplexNumber implements ComplexNumberInterface {
 
 
-    double real;
-    double imaginary;
+    protected double real;
+    protected double imaginary;
 
 
 
@@ -37,12 +37,20 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
-        return new ComplexNumber((real + ((ComplexNumber) anotherNumber).real), (imaginary + ((ComplexNumber) anotherNumber).imaginary ));
+        double a = real;
+        double b = imaginary;
+        double c = ((ComplexNumber) anotherNumber).real;
+        double d = ((ComplexNumber) anotherNumber).imaginary;
+        return new ComplexNumber((a + c), (b + d));
     }
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
-        return new ComplexNumber((real - ((ComplexNumber) anotherNumber).real), (imaginary - ((ComplexNumber) anotherNumber).imaginary ));
+        double a = real;
+        double b = imaginary;
+        double c = ((ComplexNumber) anotherNumber).real;
+        double d = ((ComplexNumber) anotherNumber).imaginary;
+        return new ComplexNumber((a - c), (b - d));
     }
 
     @Override
@@ -73,7 +81,9 @@ public class ComplexNumber implements ComplexNumberInterface {
 
     @Override
     public double calculateModulus() {
-        return Math.sqrt((real*real + imaginary*imaginary));
+        double a = real;
+        double b = imaginary;
+        return Math.sqrt((a*a + b*b));
     }
 
     @Override

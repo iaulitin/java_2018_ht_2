@@ -3,34 +3,19 @@ package ru.milandr.courses.farm.tkhorzhevskiy.goods;
 import ru.milandr.courses.farm.Good;
 
 public class ParentGood implements Good {
-    long currTime;
-    private boolean isRotten = false;
-    private long rotTime;
-    private long gatherTime;
-    private String name;
+    protected boolean isRotten;
+    protected String name;
 
-    public boolean isRotten(boolean b) {
+    public ParentGood(){
+        this.isRotten=false;
+    }
+
+    public boolean isRotten() {
         return isRotten;
     }
 
     public void setRotten(boolean rotten) {
         isRotten = rotten;
-    }
-
-    public long getRotTime() {
-        return rotTime;
-    }
-
-    public void setRotTime(int rotTime) {
-        this.rotTime = rotTime;
-    }
-
-    public long getGatherTime() {
-        return gatherTime;
-    }
-
-    public void setGatherTime(long gatherTime) {
-        this.gatherTime = gatherTime;
     }
 
     public String getName() {
@@ -41,18 +26,13 @@ public class ParentGood implements Good {
         this.name = name;
     }
 
-    public long getCurrTime() {
-        return currTime;
-    }
-
-    public void setCurrTime(long currTime) {
-        this.currTime = currTime;
-    }
-
     @Override
     public void goRotten() {
         isRotten = true;
 
+    }
+    public String toString() {
+        return this.getName();
     }
 
 

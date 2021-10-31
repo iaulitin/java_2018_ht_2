@@ -1,15 +1,10 @@
 package ru.milandr.courses.farm.tkhorzhevskiy.goods;
 
 public class Egg extends ParentGood {
+    private static final String EggName = "Яйцо";
+
     public Egg() {
-        isRotten(false);
-        setName("Яйцо");
-        setRotTime(7);
-        setGatherTime(1);
-    }
-    @Override
-    public String toString() {
-        return this.getName();
+        name=EggName;
     }
 
 }

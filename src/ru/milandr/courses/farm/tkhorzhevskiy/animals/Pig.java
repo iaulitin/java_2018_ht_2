@@ -1,17 +1,20 @@
 package ru.milandr.courses.farm.tkhorzhevskiy.animals;
 
-import ru.milandr.courses.farm.Animal;
 import ru.milandr.courses.farm.Good;
 import ru.milandr.courses.farm.tkhorzhevskiy.goods.Meat;
 
-public class Pig implements Animal {
+public class Pig extends ParentAnimal {
+    private static final String PigName = "Свинья";
     private boolean isAlive = true;
+
+    public Pig() {
+        name = PigName;
+    }
 
     @Override
     public void produceSound() {
         if (!isAlive) {
             System.out.println("Свинья отсутствует");
-
             return;
         }
         System.out.println("За альянс!");
