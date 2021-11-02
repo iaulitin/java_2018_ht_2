@@ -1,9 +1,9 @@
 package ru.milandr.courses.farm.tkhorzhevskiy.goods;
 
-public class Milk extends ParentGood{
-    private static final String MilkName = "Молоко";
+public class Milk extends ParentGood {
+    private static final String MILK_NAME = "Молоко";
 
     public Milk() {
-        name=MilkName;
+        name = MILK_NAME;
     }
 }

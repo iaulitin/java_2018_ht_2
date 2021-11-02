@@ -4,12 +4,12 @@ import ru.milandr.courses.farm.Animal;
 import ru.milandr.courses.farm.Good;
 
 
-public class ParentAnimal implements Animal {
+public abstract class ParentAnimal implements Animal {
     protected String name;
     protected boolean isAlive;
 
     public ParentAnimal() {
-        this.isAlive=true;
+        this.isAlive = true;
     }
 
     public String getName() {
@@ -39,6 +39,7 @@ public class ParentAnimal implements Animal {
     public Good produceGoods() {
         return null;
     }
+
     public String toString() {
         return this.getName();
     }

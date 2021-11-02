@@ -10,8 +10,12 @@ import ru.milandr.courses.farm.tkhorzhevskiy.goods.Milk;
 import ru.milandr.courses.farm.tkhorzhevskiy.goods.ParentGood;
 
 public class Farmer implements GenericFarmer {
-    private String name;
+    private final String name;
 
+
+    public Farmer(String name) {
+        this.name = name;
+    }
 
     @Override
     public void collectGoods(Good good) {
@@ -44,9 +48,6 @@ public class Farmer implements GenericFarmer {
         }
         System.out.println(name + " употребил " + currGood.getName());
 
-    }
-    public Farmer(String name) {
-        this.name = name;
     }
 
 }

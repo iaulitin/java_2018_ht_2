@@ -15,17 +15,13 @@ public class ComplexNumber implements ComplexNumberInterface {
         this.imaginary = y;
     }
     @Override
-    public String toString() {
-        return real + "+" + imaginary + "i";
-    }
-
     public double getReal() {
         return this.real;
     }
     public void setReal(double real) {
         this.real = real;
     }
-
+    @Override
     public double getImaginary() {
         return this.imaginary;
     }
@@ -33,42 +29,50 @@ public class ComplexNumber implements ComplexNumberInterface {
         this.imaginary = imaginary;
     }
 
-
+    public void validateNumber(ComplexNumberInterface anotherNumber){
+        if (!(anotherNumber instanceof ComplexNumber)){
+            throw new WrongNumberException("Неверный формат числа");
+        }
+    }
 
     @Override
     public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
+        validateNumber(anotherNumber);
         double a = real;
         double b = imaginary;
-        double c = ((ComplexNumber) anotherNumber).real;
-        double d = ((ComplexNumber) anotherNumber).imaginary;
+        double c = anotherNumber.getReal();
+        double d = anotherNumber.getImaginary();
         return new ComplexNumber((a + c), (b + d));
     }
 
     @Override
     public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
+        validateNumber(anotherNumber);
         double a = real;
         double b = imaginary;
-        double c = ((ComplexNumber) anotherNumber).real;
-        double d = ((ComplexNumber) anotherNumber).imaginary;
+        double c = anotherNumber.getReal();
+        double d = anotherNumber.getImaginary();
         return new ComplexNumber((a - c), (b - d));
     }
 
     @Override
     public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
+        validateNumber(anotherNumber);
         double a = real;
         double b = imaginary;
-        double c = ((ComplexNumber) anotherNumber).real;
-        double d = ((ComplexNumber) anotherNumber).imaginary;
+        double c = anotherNumber.getReal();
+        double d = anotherNumber.getImaginary();
 
         return new ComplexNumber(a * c - b * d, b * c + a * d);
     }
 
     @Override
     public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
+        validateNumber(anotherNumber);
         double a = real;
         double b = imaginary;
-        double c = ((ComplexNumber) anotherNumber).real;
-        double d = ((ComplexNumber) anotherNumber).imaginary;
+        double c = anotherNumber.getReal();
+        double d = anotherNumber.getImaginary();
         return new ComplexNumber((a * c + b * d) / (c * c + d * d), (b * c - a * d) / (c * c + d * d));
     }
 
@@ -91,6 +95,11 @@ public class ComplexNumber implements ComplexNumberInterface {
         return 0;
         //я тупой и не понял этого.
     }
+
+    @Override
+    public String toString() {
+        return real + "+" + imaginary + "i";
+    }
     public static void main(String[] args) {
 
         ComplexNumber number = new ComplexNumber(2 , 3);
@@ -103,6 +112,7 @@ public class ComplexNumber implements ComplexNumberInterface {
         System.out.println(number.multiply(number2)+ " результат перемножения");
         System.out.println(number.negate() + " негатив 1 числа");
         System.out.println(number.calculateModulus() + " модуль 1 числа");
+        number.add(new WrongNumber());
 
     }
 

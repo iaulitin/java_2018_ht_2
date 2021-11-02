@@ -4,11 +4,11 @@ import ru.milandr.courses.farm.Good;
 import ru.milandr.courses.farm.tkhorzhevskiy.goods.Meat;
 
 public class Pig extends ParentAnimal {
-    private static final String PigName = "Свинья";
+    private static final String PIG_NAME = "Свинья";
     private boolean isAlive = true;
 
     public Pig() {
-        name = PigName;
+        name = PIG_NAME;
     }
 
     @Override

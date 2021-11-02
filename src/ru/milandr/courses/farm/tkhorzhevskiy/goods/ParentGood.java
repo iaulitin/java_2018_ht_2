@@ -2,12 +2,12 @@ package ru.milandr.courses.farm.tkhorzhevskiy.goods;
 
 import ru.milandr.courses.farm.Good;
 
-public class ParentGood implements Good {
+public abstract class ParentGood implements Good {
     protected boolean isRotten;
     protected String name;
 
-    public ParentGood(){
-        this.isRotten=false;
+    public ParentGood() {
+        this.isRotten = false;
     }
 
     public boolean isRotten() {
@@ -31,6 +31,7 @@ public class ParentGood implements Good {
         isRotten = true;
 
     }
+
     public String toString() {
         return this.getName();
     }

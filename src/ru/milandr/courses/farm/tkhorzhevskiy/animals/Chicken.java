@@ -4,15 +4,15 @@ import ru.milandr.courses.farm.Good;
 import ru.milandr.courses.farm.tkhorzhevskiy.goods.Egg;
 
 public class Chicken extends ParentAnimal {
-    private static final String ChickenName = "Курица";
+    private static final String CHICKEN_NAME = "Курица";
 
     public Chicken() {
-        name=ChickenName;
+        name = CHICKEN_NAME;
     }
 
     @Override
     public void produceSound() {
-     System.out.println("За орду!");
+        System.out.println("За орду!");
     }
 
     @Override
