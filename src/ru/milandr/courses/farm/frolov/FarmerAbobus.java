@@ -19,7 +19,6 @@ public class FarmerAbobus implements GenericFarmer {
         ((SuperGood) good).getCollected(this);
     }
 
-    // можно ли сразу перегрузить метод (не писать того, что написано выше)
     public Good collectGoods(Pig pig) {
         Good meat = pig.produceGoods();
         ((Meat) meat).getCollected(this);

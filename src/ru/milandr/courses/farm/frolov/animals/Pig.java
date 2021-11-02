@@ -1,7 +1,6 @@
 package ru.milandr.courses.farm.frolov.animals;
 
 import ru.milandr.courses.farm.Good;
-import ru.milandr.courses.farm.frolov.FarmerAbobus;
 import ru.milandr.courses.farm.frolov.goods.Meat;
 
 public class Pig extends SuperAnimal {

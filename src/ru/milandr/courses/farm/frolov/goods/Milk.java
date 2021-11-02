@@ -4,6 +4,7 @@ import ru.milandr.courses.farm.frolov.FarmerAbobus;
 
 public class Milk extends SuperGood {
     private static final long MILK_EXTENDED_TIME_MS = 5000;
+    public static final String MILK_NAME = "молоко";
 
     public Milk() {
         extendedTime = MILK_EXTENDED_TIME_MS;
@@ -16,6 +17,6 @@ public class Milk extends SuperGood {
 
     @Override
     public String toString() {
-        return "молоко";
+        return MILK_NAME;
     }
 }
