@@ -40,4 +40,16 @@ public interface ComplexNumberInterface {
      * @return argument value for current complex number
      */
     double calculateArgument();
+
+    /**
+     *
+     * @return value of real part of complex nubmer
+     */
+    double getReal();
+
+    /**
+     *
+     * @return value of imaginary part of complex number
+     */
+    double getImaginary();
 }
