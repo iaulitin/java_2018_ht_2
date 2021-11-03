@@ -1,8 +1,8 @@
 package ru.milandr.courses.complexnumber.frolov;
 
-import ru.milandr.courses.complexnumber.ComplexNumberInterface;
+import ru.milandr.courses.complexnumber.NewComplexNumberInterface;
 
-public class ComplexNumber implements ComplexNumberInterface {
+public class ComplexNumber implements NewComplexNumberInterface {
 
     private final double real;
     private final double imagine;
@@ -12,29 +12,30 @@ public class ComplexNumber implements ComplexNumberInterface {
         this.imagine = b;
     }
 
+
     @Override
-    public ComplexNumberInterface add(ComplexNumberInterface anotherNumber) {
-        ComplexNumber myNumber = checkInstance(anotherNumber);
+    public NewComplexNumberInterface add(NewComplexNumberInterface anotherNumber) {
+        ComplexNumber myNumber = checkException(anotherNumber);
         return new ComplexNumber((real + myNumber.real), (imagine + myNumber.imagine));
     }
 
     @Override
-    public ComplexNumberInterface subtract(ComplexNumberInterface anotherNumber) {
-        ComplexNumber myNumber = checkInstance(anotherNumber);
+    public NewComplexNumberInterface subtract(NewComplexNumberInterface anotherNumber) {
+        ComplexNumber myNumber = checkException(anotherNumber);
         return new ComplexNumber((real - myNumber.real), (imagine - myNumber.imagine));
     }
 
     @Override
-    public ComplexNumberInterface multiply(ComplexNumberInterface anotherNumber) {
-        ComplexNumber myNumber = checkInstance(anotherNumber);
+    public NewComplexNumberInterface multiply(NewComplexNumberInterface anotherNumber) {
+        ComplexNumber myNumber = checkException(anotherNumber);
         double newReal = (real * myNumber.real - imagine * myNumber.imagine);
         double newImagine = real * myNumber.imagine + imagine * myNumber.real;
         return new ComplexNumber(newReal, newImagine);
     }
 
     @Override
-    public ComplexNumberInterface divide(ComplexNumberInterface anotherNumber) {
-        ComplexNumber myNumber = checkInstance(anotherNumber);
+    public NewComplexNumberInterface divide(NewComplexNumberInterface anotherNumber) {
+        ComplexNumber myNumber = checkException(anotherNumber);
         double v = Math.pow(myNumber.real, 2) + Math.pow(myNumber.imagine, 2);
         double newReal = (real * myNumber.real + imagine * myNumber.real) / v;
         double newImagine = (myNumber.real * imagine - real * (myNumber.imagine)) / v;
@@ -42,7 +43,7 @@ public class ComplexNumber implements ComplexNumberInterface {
     }
 
     @Override
-    public ComplexNumberInterface negate() {
+    public ComplexNumber negate() {
         double newReal = real * -1;
         double newImagine = imagine * -1;
         return new ComplexNumber(newReal, newImagine);
@@ -74,8 +75,21 @@ public class ComplexNumber implements ComplexNumberInterface {
         return real >= 0 ? Math.atan(imagine / real) : Math.atan(imagine / real + Math.toRadians(90));
     }
 
-    private ComplexNumber checkInstance(ComplexNumberInterface someInstance) {
-        return (ComplexNumber) someInstance;
+    @Override
+    public double getReal() {
+        return real;
+    }
+
+    @Override
+    public double getImagine() {
+        return imagine;
+    }
+
+    private ComplexNumber checkException(NewComplexNumberInterface someInstance) {
+        if (!(someInstance instanceof ComplexNumber)) {
+            throw new ComplexNumberException("Неправильный формат числа");
+        }
+        return new ComplexNumber(getReal(), getImagine());
     }
 
     @Override
@@ -85,30 +99,33 @@ public class ComplexNumber implements ComplexNumberInterface {
     }
 
     public static void main(String[] args) {
-        ComplexNumberInterface f1 = new ComplexNumber(5, 14);
+        NewComplexNumberInterface f1 = new ComplexNumber(5, 14);
         System.out.println(f1);
-        ComplexNumberInterface f2 = new ComplexNumber(10, -6);
+        NewComplexNumberInterface f2 = new ComplexNumber(10, -6);
         System.out.println(f2);
-        ComplexNumberInterface sum = f1.add(f2);
+        NewComplexNumberInterface sum = f1.add(f2);
         System.out.println("сумма: " + sum);
-        ComplexNumberInterface diff = f1.subtract(f2);
+        NewComplexNumberInterface diff = f1.subtract(f2);
         System.out.println("разность: " + diff);
-        ComplexNumberInterface multi = f1.multiply(f2);
+        NewComplexNumberInterface multi = f1.multiply(f2);
         System.out.println("умножение: " + multi);
-        ComplexNumberInterface div = f1.divide(f2);
+        NewComplexNumberInterface div = f1.divide(f2);
         System.out.println("деление: " + div);
-        ComplexNumberInterface negative = f1.negate();
+        NewComplexNumberInterface negative = f1.negate();
         System.out.println("негатив: " + negative);
         double mod = f1.calculateModulus();
         System.out.println("модуль: " + mod);
         double arg = f1.calculateArgument();
         System.out.println("аргумент: " + arg);
 
-        ComplexNumberInterface f3 = new ComplexNumber(0, -6);
+        NewComplexNumberInterface f3 = new ComplexNumber(0, -6);
         double arg3 = f3.calculateArgument();
         System.out.println("аргумент чисто мнимого числа: " + arg3);
-        ComplexNumberInterface f4 = new ComplexNumber(10, 0);
+        NewComplexNumberInterface f4 = new ComplexNumber(10, 0);
         double arg4 = f4.calculateArgument();
         System.out.println("аргумент действительного числа: " + arg4);
+
+        //Попытка передать невалидный аргумент
+        f1.add(new Abobus());
     }
 }
